@@ -22,7 +22,7 @@ Une API REST complète construite avec FastAPI, PostgreSQL et une authentificati
 
 ## Demo
 
-API disponible en ligne : [https://api-rest-xxxx.onrender.com/docs](https://api-rest-xxxx.onrender.com/docs)
+API disponible en ligne : [https://api-rest-4j5w.onrender.com/docs](https://api-rest-4j5w.onrender.com/docs)
 
 ## Lancer le projet en local
 
@@ -51,7 +51,7 @@ Crée un fichier `.env` à la racine :
 
 ```
 DATABASE_URL=postgresql://apiuser:apipassword@localhost:5432/apidb
-SECRET_KEY=unesupersecretkeybiensolide
+SECRET_KEY=YsrSSMzBsfCswYdqgNMR96ZHC6GpgXZ3
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```
