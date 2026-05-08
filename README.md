@@ -51,7 +51,7 @@ Crée un fichier `.env` à la racine :
 
 ```
 DATABASE_URL=postgresql://apiuser:apipassword@localhost:5432/apidb
-SECRET_KEY=YsrSSMzBsfCswYdqgNMR96ZHC6GpgXZ3
+SECRET_KEY=remplace_par_ta_cle_secrete
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```
