@@ -16,4 +16,4 @@ app.include_router(users.router)
 
 @app.get("/", tags=["root"])
 def root():
-    return {"message": "API opérationnelle"}
+    return {"message": "API opérationnelle v2"}
