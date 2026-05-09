@@ -10,6 +10,7 @@ Une API REST complète construite avec FastAPI, PostgreSQL et une authentificati
 - **JWT** — authentification stateless
 - **bcrypt** — hashing des mots de passe
 - **Pytest** — tests d'intégration automatisés
+- **Docker** + **Docker Compose** — containerisation
 - **Render** — déploiement cloud
 
 ## Fonctionnalités
@@ -19,10 +20,13 @@ Une API REST complète construite avec FastAPI, PostgreSQL et une authentificati
 - Routes protégées par token
 - Documentation interactive auto-générée (Swagger)
 - 5 tests d'intégration automatisés
+- Containerisation complète avec Docker Compose
 
 ## Demo
 
 API disponible en ligne : [https://api-rest-4j5w.onrender.com/docs](https://api-rest-4j5w.onrender.com/docs)
+
+Image Docker Hub : [bilalmdev164/api-rest](https://hub.docker.com/r/bilalmdev164/api-rest)
 
 ## Lancer le projet en local
 
@@ -34,7 +38,7 @@ API disponible en ligne : [https://api-rest-4j5w.onrender.com/docs](https://api-
 
 ```bash
 # Cloner le repo
-git clone https://github.com/ton-username/api-rest.git
+git clone https://github.com/bilalmdev164/api-rest.git
 cd api-rest
 
 # Créer et activer l'environnement virtuel
@@ -47,13 +51,11 @@ pip install -r requirements.txt
 
 ### Configuration
 
-Crée un fichier `.env` à la racine :
+Crée un fichier `.env` à partir de l'exemple :
 
-```
-DATABASE_URL=postgresql://apiuser:apipassword@localhost:5432/apidb
-SECRET_KEY=remplace_par_ta_cle_secrete
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=30
+```bash
+cp .env.example .env
+# Remplis les variables dans .env
 ```
 
 ### Lancer le serveur
@@ -68,6 +70,38 @@ L'API est accessible sur `http://localhost:8000/docs`
 
 ```bash
 pytest tests/ -v
+```
+
+## Lancer avec Docker
+
+### Prérequis
+- Docker
+- Docker Compose
+
+### Installation
+
+```bash
+# Cloner le repo
+git clone https://github.com/bilalmdev164/api-rest.git
+cd api-rest
+
+# Créer le fichier .env
+cp .env.example .env
+# Remplis les variables dans .env
+```
+
+### Lancer avec Docker Compose
+
+```bash
+docker-compose up --build
+```
+
+L'API est accessible sur `http://localhost:8000/docs`
+
+### Ou utiliser l'image Docker Hub directement
+
+```bash
+docker pull bilalmdev164/api-rest:latest
 ```
 
 ## Endpoints
@@ -89,4 +123,5 @@ pytest tests/ -v
 - Implémenter une authentification JWT de bout en bout
 - Utiliser un ORM pour interagir avec une base de données relationnelle
 - Écrire des tests d'intégration automatisés et isolés
+- Containeriser une application avec Docker et Docker Compose
 - Déployer une application Python sur le cloud
