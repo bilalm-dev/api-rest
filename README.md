@@ -11,6 +11,7 @@ Une API REST complète construite avec FastAPI, PostgreSQL et une authentificati
 - **bcrypt** — hashing des mots de passe
 - **Pytest** — tests d'intégration automatisés
 - **Docker** + **Docker Compose** — containerisation
+- **GitHub Actions** — pipeline CI/CD automatisé
 - **Render** — déploiement cloud
 
 ## Fonctionnalités
@@ -21,12 +22,31 @@ Une API REST complète construite avec FastAPI, PostgreSQL et une authentificati
 - Documentation interactive auto-générée (Swagger)
 - 5 tests d'intégration automatisés
 - Containerisation complète avec Docker Compose
+- Pipeline CI/CD automatisé — tests, build Docker, déploiement
 
 ## Demo
 
 API disponible en ligne : [https://api-rest-4j5w.onrender.com/docs](https://api-rest-4j5w.onrender.com/docs)
 
 Image Docker Hub : [bilalmdev164/api-rest](https://hub.docker.com/r/bilalmdev164/api-rest)
+
+## Pipeline CI/CD
+
+À chaque push sur `main` :
+
+```
+Push sur main
+     │
+     ▼
+┌─────────┐     ┌──────────────┐     ┌──────────────┐
+│  Tests  │ ──► │ Build Docker │ ──► │  Déploiement │
+│ Pytest  │     │  + Push Hub  │     │    Render    │
+└─────────┘     └──────────────┘     └──────────────┘
+```
+
+- **Tests** : lance PostgreSQL via service container et exécute les 5 tests d'intégration
+- **Build Docker** : builde et pousse l'image taguée avec le hash du commit sur Docker Hub
+- **Déploiement** : déclenche automatiquement le redéploiement sur Render
 
 ## Lancer le projet en local
 
@@ -124,4 +144,5 @@ docker pull bilalmdev164/api-rest:latest
 - Utiliser un ORM pour interagir avec une base de données relationnelle
 - Écrire des tests d'intégration automatisés et isolés
 - Containeriser une application avec Docker et Docker Compose
+- Mettre en place un pipeline CI/CD avec GitHub Actions
 - Déployer une application Python sur le cloud
