@@ -14,6 +14,21 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: apiuser
+          POSTGRES_PASSWORD: apipassword
+          POSTGRES_DB: testdb
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Récupérer le code
         uses: actions/checkout@v4
@@ -26,5 +41,10 @@ jobs:
       - name: Installer les dépendances
         run: pip install -r requirements.txt
 
-      - name: Afficher la version Python
-        run: python --version
+      - name: Lancer les tests
+        env:
+          DATABASE_URL: postgresql://apiuser:apipassword@localhost:5432/apidb
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          ALGORITHM: ${{ secrets.ALGORITHM }}
+          ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
+        run: pytest tests/ -v
