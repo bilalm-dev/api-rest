@@ -43,7 +43,7 @@ jobs:
 
       - name: Lancer les tests
         env:
-          DATABASE_URL: postgresql://apiuser:apipassword@localhost:5432/apidb
+          DATABASE_URL: postgresql://apiuser:apipassword@localhost:5432/testdb
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           ALGORITHM: ${{ secrets.ALGORITHM }}
           ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
