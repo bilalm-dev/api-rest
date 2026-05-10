@@ -79,3 +79,13 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+
+  deploy:
+    name: Déploiement Render
+    runs-on: ubuntu-latest
+    needs: docker
+
+    steps:
+      - name: Déclencher le redéploiement
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
